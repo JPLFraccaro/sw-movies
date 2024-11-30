@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { User } from './users/user.entity';
+import { Movie } from './movies/movie.entity';
 
 @Module({
   imports: [
@@ -17,6 +19,7 @@ import { AppService } from './app.service';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    TypeOrmModule.forFeature([User, Movie]),
   ],
   controllers: [AppController],
   providers: [AppService],
